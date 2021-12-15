@@ -96,6 +96,7 @@ header{
     place-content: center;
     transition: 0.5s;
     position: relative;
+    margin-left: 1rem;
 }
 .shop-item-card:hover{
     transform: scale(1.1, 1.1);
