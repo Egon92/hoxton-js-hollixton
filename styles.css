@@ -127,6 +127,9 @@ header{
     font-weight: 700;
     padding: 5px 0;
 }
+.discount-price{
+    color: red;
+}
 .footer-items{
     display: grid;
     grid-template-columns: repeat(2, auto);
