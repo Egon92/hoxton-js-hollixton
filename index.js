@@ -1,122 +1,16 @@
 const state = {
-    store: [{
-            "id": 1,
-            "type": "Guys",
-            "name": "Crewneck T-Shirt 3-Pack",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_324-1085-0123-100_prod1",
-            "price": 40,
-            "discountedPrice": 21.99,
-            "dateEntered": "2021/12/10",
-            "stock": 10
-        },
-        {
-            "id": 2,
-            "type": "Girls",
-            "name": "Smocked Tiered Mini Dress",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_359-1220-1911-805_prod1",
-            "price": 29,
-            "dateEntered": "2021/08/10",
-            "stock": 5
-        },
-        {
-            "id": 3,
-            "type": "Girls",
-            "name": "Gilly Hicks Cozy Joggers",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_346-1252-0485-116_prod1",
-            "price": 27,
-            "dateEntered": "2021/12/09",
-            "stock": 15
-        },
-        {
-            "id": 4,
-            "type": "Guys",
-            "name": "Gilly Hicks Go Energize 2-in-1 Running Short",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_346-1614-0521-900_prod1",
-            "price": 29,
-            "dateEntered": "2021/07/10",
-            "stock": 20
-        },
-        {
-            "id": 5,
-            "type": "Guys",
-            "name": "Gilly Hicks Woven Boxer",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_309-1408-0413-136_prod1",
-            "price": 12,
-            "dateEntered": "2021/07/10",
-            "stock": 2
-        },
-        {
-            "id": 6,
-            "type": "Guys",
-            "name": "Gilly Hicks Smiley Socks 2-Pack",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_354-1020-0010-900_prod1",
-            "price": 14,
-            "dateEntered": "2021/06/11",
-            "stock": 1
-        },
-        {
-            "id": 7,
-            "type": "Guys",
-            "name": "Stretch Poplin Slim Fit shirt",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_325-1072-0609-214_prod1",
-            "price": 29,
-            "discountedPrice": 20.3,
-            "dateEntered": "2020/02/10",
-            "stock": 13
-        },
-        {
-            "id": 8,
-            "type": "Guys",
-            "name": "Must-Have Crewneck T-Shirt 5-Pack",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_324-1072-0132-108_prod1",
-            "price": 55,
-            "discountedPrice": 34.99,
-            "dateEntered": "2021/08/10",
-            "stock": 12
-        },
-        {
-            "id": 9,
-            "type": "Guys",
-            "name": "Print Logo Graphic Tee",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_323-1957-2978-908_prod1",
-            "price": 25,
-            "discountedPrice": 11.99,
-            "dateEntered": "2021/04/10",
-            "stock": 17
-        },
-        {
-            "id": 10,
-            "type": "Girls",
-            "name": "Ultra High-Rise Dad Sweatpants",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_347-1074-0669-100_prod1",
-            "price": 35,
-            "discountedPrice": 14.99,
-            "dateEntered": "2021/08/01",
-            "stock": 6
-        },
-        {
-            "id": 11,
-            "type": "Girls",
-            "name": "Crop Oversized Hoodie",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_352-3541-0604-100_prod1",
-            "price": 35,
-            "discountedPrice": 12.99,
-            "dateEntered": "2021/08/01",
-            "stock": 8
-        },
-        {
-            "id": 12,
-            "type": "Girls",
-            "name": "Gilly Hicks Socks 2-Pack",
-            "image": "https://img.hollisterco.com/is/image/anf/KIC_354-1013-0002-100_prod1",
-            "price": 14,
-            "discountedPrice": 5.99,
-            "dateEntered": "2021/07/10",
-            "stock": 10
-        }
-    ],
+    store: [],
+    selectedProduct: null
 }
-
+//SERVER FUNCTIONS
+function getStoreItems() {
+    return fetch(`http://localhost:3000/store`)
+        .then(function (resp) {
+            return resp.json()
+        }).then(function (store) {
+            return state.store = store
+        })
+}
 // Here's the header template which we create
 /* <header>
         <ul class="header-elements">
@@ -137,10 +31,11 @@ const state = {
             </ul>
         </ul>
     </header> */
-const header = document.createElement(`header`)
+
 
 function renderHeader() {
 
+    const header = document.createElement(`header`)
 
     const headerElements = document.createElement(`ul`)
     headerElements.setAttribute(`class`, `header-elements`)
@@ -151,6 +46,10 @@ function renderHeader() {
     const appName = document.createElement(`li`)
     appName.setAttribute(`id`, `left-header-app-name`)
     appName.textContent = `Hollixton`
+    appName.addEventListener(`click`, function () {
+        state.selectedProduct = null
+        render()
+    })
 
     const navBar = document.createElement(`nav`)
     navBar.setAttribute(`id`, `left-header-nav-bar`)
@@ -177,21 +76,21 @@ function renderHeader() {
     const rightHeaderItemIcon1 = document.createElement(`img`)
     rightHeaderItemIcon1.setAttribute(`class`, `right-header-item-icon`)
     rightHeaderItemIcon1.setAttribute(`id`, `mag-glass`)
-    rightHeaderItemIcon1.setAttribute(`src`, `/assets/search_black_48dp.svg`)
+    rightHeaderItemIcon1.setAttribute(`src`, `./assets/search_black_48dp.svg`)
 
     const rightHeaderItem2 = document.createElement(`li`)
     rightHeaderItem2.setAttribute(`class`, `right-header-item`)
     const rightHeaderItemIcon2 = document.createElement(`img`)
     rightHeaderItemIcon2.setAttribute(`class`, `right-header-item-icon`)
     rightHeaderItemIcon2.setAttribute(`id`, `profile-acc`)
-    rightHeaderItemIcon2.setAttribute(`src`, `/assets/person_black_36dp.svg`)
+    rightHeaderItemIcon2.setAttribute(`src`, `./assets/person_black_36dp.svg`)
 
     const rightHeaderItem3 = document.createElement(`li`)
     rightHeaderItem3.setAttribute(`class`, `right-header-item`)
     const rightHeaderItemIcon3 = document.createElement(`img`)
     rightHeaderItemIcon3.setAttribute(`class`, `right-header-item-icon`)
     rightHeaderItemIcon3.setAttribute(`id`, `shop-bag`)
-    rightHeaderItemIcon3.setAttribute(`src`, `/assets/shopping_bag_black_48dp.svg`)
+    rightHeaderItemIcon3.setAttribute(`src`, `./assets/shopping_bag_black_48dp.svg`)
 
     rightHeaderItem1.append(rightHeaderItemIcon1)
 
@@ -227,6 +126,23 @@ function renderHeader() {
 function renderMain() {
     const main = document.createElement(`main`)
 
+    if (state.selectedProduct !== null) {
+        renderSelectedProduct(main)
+    } else {
+        renderShopItems(main)
+    }
+
+
+    document.body.append(main)
+}
+
+function renderSelectedProduct(main) {
+    const h1 = document.createElement(`h1`)
+    h1.textContent = state.selectedProduct.name
+    main.append(h1)
+}
+
+function renderShopItems(main) {
     const homeH3El = document.createElement(`h3`)
     homeH3El.setAttribute(`id`, `home-h3`)
     homeH3El.textContent = `Home`
@@ -239,9 +155,8 @@ function renderMain() {
     }
 
     main.append(homeH3El, container)
-
-    document.body.append(main)
 }
+
 function isNewItemOrNot(item) {
     const s = 1000
     const m = s * 60
@@ -252,6 +167,7 @@ function isNewItemOrNot(item) {
 
     return Date.parse(item.dateEntered) >= isNewItemLimit
 }
+
 function shopItemCard(item, container) {
     // "id": 1,
     //   "type": "Guys",
@@ -265,19 +181,24 @@ function shopItemCard(item, container) {
     const shopItemCard = document.createElement(`div`)
     shopItemCard.setAttribute(`class`, `shop-item-card`)
 
+    shopItemCard.addEventListener(`click`, function () {
+        state.selectedProduct = item
+        render()
+    })
+
     const newItemNote = document.createElement(`div`)
     newItemNote.setAttribute(`class`, `new-item-note`)
 
-    // const newNote = isNewItemOrNot(item)
+    const newNote = isNewItemOrNot(item)
 
-    
-        if(newNote){
-            const note = document.createElement(`span`)
-            note.setAttribute(`id`, `note`)
-            note.textContent = `New!`
-            newItemNote.append(note)
-        }
-    
+
+    if (newNote) {
+        const note = document.createElement(`span`)
+        note.setAttribute(`id`, `note`)
+        note.textContent = `New!`
+        newItemNote.append(note)
+    }
+
 
     const shopItemCardImage = document.createElement(`img`)
     shopItemCardImage.setAttribute(`class`, `shop-item-card-image`)
@@ -328,10 +249,11 @@ function shopItemCard(item, container) {
             </li>
         </ul>
     </footer> */
-const footer = document.createElement(`footer`)
+
 
 function renderFooter() {
 
+    const footer = document.createElement(`footer`)
 
     const footerItems = document.createElement(`ul`)
     footerItems.setAttribute(`class`, `footer-items`)
@@ -347,7 +269,7 @@ function renderFooter() {
     countryFlag.setAttribute(`id`, `country-flag`)
     const flag = document.createElement(`img`)
     flag.setAttribute(`id`, `flag`)
-    flag.setAttribute(`src`, `/assets/Flag_of_Albania.svg`)
+    flag.setAttribute(`src`, `./assets/Flag_of_Albania.svg`)
 
     countryFlag.append(flag)
 
@@ -370,4 +292,13 @@ function render() {
     renderMain()
     renderFooter()
 }
-render()
+
+function init() {
+    render()
+    getStoreItems().then(function (resp) {
+        render()
+    })
+
+
+}
+init()
