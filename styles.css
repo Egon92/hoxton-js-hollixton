@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     list-style: none;
-    /* outline: solid black 1px; */
+    outline: solid black 1px;
     font-family: sans-serif;
 }
 header{
@@ -127,6 +127,15 @@ header{
     color: #203257;
     font-weight: 700;
     padding: 5px 0;
+}
+.shop-item-card-price{
+    display: grid;
+    grid-auto-rows: inherit;
+}
+.actual-price.discounted{
+    color: #20325763;
+    text-decoration: line-through;
+
 }
 .discount-price{
     color: red;

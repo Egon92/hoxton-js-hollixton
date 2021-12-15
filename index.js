@@ -1,34 +1,33 @@
-const state ={
-    store:[
-        {
+const state = {
+    store: [{
             "id": 1,
             "type": "Guys",
             "name": "Crewneck T-Shirt 3-Pack",
             "image": "https://img.hollisterco.com/is/image/anf/KIC_324-1085-0123-100_prod1",
             "price": 40,
             "discountedPrice": 21.99,
-            "dateEntered": "2021/08/10",
+            "dateEntered": "2021/12/10",
             "stock": 10
-          },
-          {
+        },
+        {
             "id": 2,
             "type": "Girls",
             "name": "Smocked Tiered Mini Dress",
             "image": "https://img.hollisterco.com/is/image/anf/KIC_359-1220-1911-805_prod1",
             "price": 29,
-            "dateEntered": "2021/07/10",
+            "dateEntered": "2021/08/10",
             "stock": 5
-          },
-          {
+        },
+        {
             "id": 3,
             "type": "Girls",
             "name": "Gilly Hicks Cozy Joggers",
             "image": "https://img.hollisterco.com/is/image/anf/KIC_346-1252-0485-116_prod1",
             "price": 27,
-            "dateEntered": "2021/05/06",
+            "dateEntered": "2021/12/09",
             "stock": 15
-          },
-          {
+        },
+        {
             "id": 4,
             "type": "Guys",
             "name": "Gilly Hicks Go Energize 2-in-1 Running Short",
@@ -36,8 +35,8 @@ const state ={
             "price": 29,
             "dateEntered": "2021/07/10",
             "stock": 20
-          },
-          {
+        },
+        {
             "id": 5,
             "type": "Guys",
             "name": "Gilly Hicks Woven Boxer",
@@ -45,8 +44,8 @@ const state ={
             "price": 12,
             "dateEntered": "2021/07/10",
             "stock": 2
-          },
-          {
+        },
+        {
             "id": 6,
             "type": "Guys",
             "name": "Gilly Hicks Smiley Socks 2-Pack",
@@ -54,8 +53,8 @@ const state ={
             "price": 14,
             "dateEntered": "2021/06/11",
             "stock": 1
-          },
-          {
+        },
+        {
             "id": 7,
             "type": "Guys",
             "name": "Stretch Poplin Slim Fit shirt",
@@ -64,8 +63,8 @@ const state ={
             "discountedPrice": 20.3,
             "dateEntered": "2020/02/10",
             "stock": 13
-          },
-          {
+        },
+        {
             "id": 8,
             "type": "Guys",
             "name": "Must-Have Crewneck T-Shirt 5-Pack",
@@ -74,8 +73,8 @@ const state ={
             "discountedPrice": 34.99,
             "dateEntered": "2021/08/10",
             "stock": 12
-          },
-          {
+        },
+        {
             "id": 9,
             "type": "Guys",
             "name": "Print Logo Graphic Tee",
@@ -84,8 +83,8 @@ const state ={
             "discountedPrice": 11.99,
             "dateEntered": "2021/04/10",
             "stock": 17
-          },
-          {
+        },
+        {
             "id": 10,
             "type": "Girls",
             "name": "Ultra High-Rise Dad Sweatpants",
@@ -94,8 +93,8 @@ const state ={
             "discountedPrice": 14.99,
             "dateEntered": "2021/08/01",
             "stock": 6
-          },
-          {
+        },
+        {
             "id": 11,
             "type": "Girls",
             "name": "Crop Oversized Hoodie",
@@ -104,8 +103,8 @@ const state ={
             "discountedPrice": 12.99,
             "dateEntered": "2021/08/01",
             "stock": 8
-          },
-          {
+        },
+        {
             "id": 12,
             "type": "Girls",
             "name": "Gilly Hicks Socks 2-Pack",
@@ -114,8 +113,8 @@ const state ={
             "discountedPrice": 5.99,
             "dateEntered": "2021/07/10",
             "stock": 10
-          }
-    ]
+        }
+    ],
 }
 
 // Here's the header template which we create
@@ -138,62 +137,61 @@ const state ={
             </ul>
         </ul>
     </header> */
-    const header = document.createElement(`header`)
+const header = document.createElement(`header`)
 
-function renderHeader(){
+function renderHeader() {
 
 
     const headerElements = document.createElement(`ul`)
-    headerElements.setAttribute(`class`,`header-elements`)
+    headerElements.setAttribute(`class`, `header-elements`)
 
     const leftHeader = document.createElement(`ul`)
-    leftHeader.setAttribute(`class`,`left-header`)
+    leftHeader.setAttribute(`class`, `left-header`)
 
     const appName = document.createElement(`li`)
-    appName.setAttribute(`id`,`left-header-app-name`)
+    appName.setAttribute(`id`, `left-header-app-name`)
     appName.textContent = `Hollixton`
-    console.log(appName)
 
     const navBar = document.createElement(`nav`)
-    navBar.setAttribute(`id`,`left-header-nav-bar`)
+    navBar.setAttribute(`id`, `left-header-nav-bar`)
 
     const span1 = document.createElement(`span`)
-    span1.setAttribute(`class`,`nav-item`)
+    span1.setAttribute(`class`, `nav-item`)
     span1.textContent = `Girls`
 
     const span2 = document.createElement(`span`)
-    span2.setAttribute(`class`,`nav-item`)
+    span2.setAttribute(`class`, `nav-item`)
     span2.textContent = `Guys`
 
     const span3 = document.createElement(`span`)
-    span3.setAttribute(`class`,`nav-item`)
+    span3.setAttribute(`class`, `nav-item`)
     span3.textContent = `Sale`
 
     navBar.append(span1, span2, span3)
 
     const rightHeader = document.createElement(`ul`)
-    rightHeader.setAttribute(`class`,`right-header`)
+    rightHeader.setAttribute(`class`, `right-header`)
 
     const rightHeaderItem1 = document.createElement(`li`)
-    rightHeaderItem1.setAttribute(`class`,`right-header-item`)
+    rightHeaderItem1.setAttribute(`class`, `right-header-item`)
     const rightHeaderItemIcon1 = document.createElement(`img`)
-    rightHeaderItemIcon1.setAttribute(`class`,`right-header-item-icon`)
-    rightHeaderItemIcon1.setAttribute(`id`,`mag-glass`)
-    rightHeaderItemIcon1.setAttribute(`src`,`/assets/search_black_48dp.svg`)
+    rightHeaderItemIcon1.setAttribute(`class`, `right-header-item-icon`)
+    rightHeaderItemIcon1.setAttribute(`id`, `mag-glass`)
+    rightHeaderItemIcon1.setAttribute(`src`, `/assets/search_black_48dp.svg`)
 
     const rightHeaderItem2 = document.createElement(`li`)
-    rightHeaderItem2.setAttribute(`class`,`right-header-item`)
+    rightHeaderItem2.setAttribute(`class`, `right-header-item`)
     const rightHeaderItemIcon2 = document.createElement(`img`)
-    rightHeaderItemIcon2.setAttribute(`class`,`right-header-item-icon`)
-    rightHeaderItemIcon2.setAttribute(`id`,`profile-acc`)
-    rightHeaderItemIcon2.setAttribute(`src`,`/assets/person_black_36dp.svg`)
+    rightHeaderItemIcon2.setAttribute(`class`, `right-header-item-icon`)
+    rightHeaderItemIcon2.setAttribute(`id`, `profile-acc`)
+    rightHeaderItemIcon2.setAttribute(`src`, `/assets/person_black_36dp.svg`)
 
     const rightHeaderItem3 = document.createElement(`li`)
-    rightHeaderItem3.setAttribute(`class`,`right-header-item`)
+    rightHeaderItem3.setAttribute(`class`, `right-header-item`)
     const rightHeaderItemIcon3 = document.createElement(`img`)
-    rightHeaderItemIcon3.setAttribute(`class`,`right-header-item-icon`)
-    rightHeaderItemIcon3.setAttribute(`id`,`shop-bag`)
-    rightHeaderItemIcon3.setAttribute(`src`,`/assets/shopping_bag_black_48dp.svg`)
+    rightHeaderItemIcon3.setAttribute(`class`, `right-header-item-icon`)
+    rightHeaderItemIcon3.setAttribute(`id`, `shop-bag`)
+    rightHeaderItemIcon3.setAttribute(`src`, `/assets/shopping_bag_black_48dp.svg`)
 
     rightHeaderItem1.append(rightHeaderItemIcon1)
 
@@ -221,22 +219,22 @@ function renderHeader(){
                 <div class="new-item-note"><span id="note">New!</span></div>
                 <img class="shop-item-card-image" src="https://img.hollisterco.com/is/image/anf/KIC_324-1085-0123-100_prod1" alt="">
                 <div class="shop-item-card-title">Crewneck T-Shirt 3-Pack</div>
-                <div class="shop-item-card-price">£40<span class="discount-price">£21.99</span></div>
+                <div class="shop-item-card-price"><span class = "actual-price">£40</span><span class="discount-price">£21.99</span></div>
             </div>
         </section>
     </main> */
 
-function renderMain(){
+function renderMain() {
     const main = document.createElement(`main`)
-    
+
     const homeH3El = document.createElement(`h3`)
-    homeH3El.setAttribute(`id`,`home-h3`)
+    homeH3El.setAttribute(`id`, `home-h3`)
     homeH3El.textContent = `Home`
 
     const container = document.createElement(`section`)
-    container.setAttribute(`class`,`container`)
+    container.setAttribute(`class`, `container`)
 
-    for(const item of state.store){
+    for (const item of state.store) {
         shopItemCard(item, container)
     }
 
@@ -244,8 +242,17 @@ function renderMain(){
 
     document.body.append(main)
 }
+function isNewItemOrNot(item) {
+    const s = 1000
+    const m = s * 60
+    const h = m * 60
+    const d = h * 24
+    const interv = d * 10
+    const isNewItemLimit = Date.now() - interv
 
-function shopItemCard(item, container){
+    return Date.parse(item.dateEntered) >= isNewItemLimit
+}
+function shopItemCard(item, container) {
     // "id": 1,
     //   "type": "Guys",
     //   "name": "Crewneck T-Shirt 3-Pack",
@@ -256,39 +263,55 @@ function shopItemCard(item, container){
     //   "stock": 10
 
     const shopItemCard = document.createElement(`div`)
-    shopItemCard.setAttribute(`class`,`shop-item-card`)
+    shopItemCard.setAttribute(`class`, `shop-item-card`)
 
     const newItemNote = document.createElement(`div`)
-    newItemNote.setAttribute(`class`,`new-item-note`)
+    newItemNote.setAttribute(`class`, `new-item-note`)
 
-    const note = document.createElement(`span`)
-    note.setAttribute(`id`,`note`)
-    note.textContent = "New!"
+    // const newNote = isNewItemOrNot(item)
 
-    newItemNote.append(note)
+    
+        if(newNote){
+            const note = document.createElement(`span`)
+            note.setAttribute(`id`, `note`)
+            note.textContent = `New!`
+            newItemNote.append(note)
+        }
+    
 
     const shopItemCardImage = document.createElement(`img`)
-    shopItemCardImage.setAttribute(`class`,`shop-item-card-image`)
-    shopItemCardImage.setAttribute(`src`,item.image)
+    shopItemCardImage.setAttribute(`class`, `shop-item-card-image`)
+    shopItemCardImage.setAttribute(`src`, item.image)
 
     const shopItemCardTitle = document.createElement(`div`)
-    shopItemCardTitle.setAttribute(`class`,`shop-item-card-title`)
+    shopItemCardTitle.setAttribute(`class`, `shop-item-card-title`)
     shopItemCardTitle.textContent = item.name
 
     const shopItemCardPrice = document.createElement(`div`)
-    shopItemCardPrice.setAttribute(`class`,`shop-item-card-price`)
-    shopItemCardPrice.textContent = `£${item.price}`
+    shopItemCardPrice.setAttribute(`class`, `shop-item-card-price`)
 
-    const shopItemDiscountPrice = document.createElement(`span`)
-    shopItemDiscountPrice.setAttribute(`class`,`discount-price`)
-    shopItemDiscountPrice.textContent = `£${item.discountedPrice}`
 
-    shopItemCardPrice.append(shopItemDiscountPrice)
+    const shopItemActualPrice = document.createElement(`span`)
+    shopItemActualPrice.setAttribute(`class`, `actual-price`)
+    shopItemActualPrice.textContent = `£${item.price}`
+
+    shopItemCardPrice.append(shopItemActualPrice)
+
+    if (item.discountedPrice) {
+        shopItemActualPrice.classList.add(`discounted`)
+        const shopItemDiscountPrice = document.createElement(`span`)
+        shopItemDiscountPrice.setAttribute(`class`, `discount-price`)
+        shopItemDiscountPrice.textContent = `£${item.discountedPrice}`
+        shopItemCardPrice.append(shopItemDiscountPrice)
+    }
+
 
     shopItemCard.append(newItemNote, shopItemCardImage, shopItemCardTitle, shopItemCardPrice)
 
     container.append(shopItemCard)
 }
+
+
 
 // Here's the footer template which we create
 /* <footer>
@@ -305,30 +328,31 @@ function shopItemCard(item, container){
             </li>
         </ul>
     </footer> */
-    const footer = document.createElement(`footer`)
-function renderFooter(){
-    
+const footer = document.createElement(`footer`)
+
+function renderFooter() {
+
 
     const footerItems = document.createElement(`ul`)
-    footerItems.setAttribute(`class`,`footer-items`)
-    
+    footerItems.setAttribute(`class`, `footer-items`)
+
     const footerAppName = document.createElement(`li`)
-    footerAppName.setAttribute(`id`,`footer-items-app-name`)
+    footerAppName.setAttribute(`id`, `footer-items-app-name`)
     footerAppName.textContent = `Hollixton`
 
     const country = document.createElement(`li`)
-    country.setAttribute(`class`,`country`)
+    country.setAttribute(`class`, `country`)
 
     const countryFlag = document.createElement(`div`)
-    countryFlag.setAttribute(`id`,`country-flag`)
+    countryFlag.setAttribute(`id`, `country-flag`)
     const flag = document.createElement(`img`)
-    flag.setAttribute(`id`,`flag`)
-    flag.setAttribute(`src`,`/assets/Flag_of_Albania.svg`)
+    flag.setAttribute(`id`, `flag`)
+    flag.setAttribute(`src`, `/assets/Flag_of_Albania.svg`)
 
     countryFlag.append(flag)
 
     const countryName = document.createElement(`span`)
-    countryName.setAttribute(`id`,`country-name`)
+    countryName.setAttribute(`id`, `country-name`)
     countryName.textContent = `Albania`
 
     country.append(countryFlag, countryName)
@@ -339,11 +363,11 @@ function renderFooter(){
 
     document.body.append(footer)
 }
-function render(){
-    document.body.innerHTML= ''
+
+function render() {
+    document.body.innerHTML = ''
     renderHeader()
     renderMain()
     renderFooter()
 }
 render()
-
