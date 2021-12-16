@@ -131,8 +131,6 @@ function renderMain() {
     } else {
         renderShopItems(main)
     }
-
-
     document.body.append(main)
 }
 
@@ -261,15 +259,10 @@ function shopItemCard(item, container) {
         shopItemDiscountPrice.textContent = `£${item.discountedPrice}`
         shopItemCardPrice.append(shopItemDiscountPrice)
     }
-
-
     shopItemCard.append(newItemNote, shopItemCardImage, shopItemCardTitle, shopItemCardPrice)
 
     container.append(shopItemCard)
 }
-
-
-
 // Here's the footer template which we create
 /* <footer>
         <ul class="footer-items">
