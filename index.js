@@ -137,9 +137,45 @@ function renderMain() {
 }
 
 function renderSelectedProduct(main) {
-    const h1 = document.createElement(`h1`)
-    h1.textContent = state.selectedProduct.name
-    main.append(h1)
+    // <section class="product-container">
+    //     <div class="product-image">
+    //         <img class="item-image" src="https://img.hollisterco.com/is/image/anf/KIC_324-1085-0123-100_prod1" alt="">
+    //     </div>
+    //     <div class="product-name-and-add-button">
+    //         <span class="product-title">Crewneck T-Shirt 3-Pack</span>
+    //         <button type="submit" class="add-button">ADD TO BAG</button>
+    //     </div>
+    // </section>
+
+    const productContainer = document.createElement(`section`)
+    productContainer.setAttribute(`class`, `product-container`)
+
+    const productImage = document.createElement(`div`)
+    productImage.setAttribute(`class`, `product-image`)
+
+    const itemImage = document.createElement(`img`)
+    itemImage.setAttribute(`class`, `item-image`)
+    itemImage.setAttribute(`src`, state.selectedProduct.image)
+
+    productImage.append(itemImage)
+
+    const productNameAndButton = document.createElement(`div`)
+    productNameAndButton.setAttribute(`class`, `product-name-and-add-button`)
+
+    const productTitle = document.createElement(`span`)
+    productTitle.setAttribute(`class`, `product-title`)
+    productTitle.textContent = state.selectedProduct.name
+
+    const addButton = document.createElement(`button`)
+    addButton.setAttribute(`class`, `add-button`)
+    addButton.setAttribute(`type`, `submit`)
+    addButton.textContent = `ADD TO BAG`
+
+    productNameAndButton.append(productTitle, addButton)
+
+    productContainer.append(productImage, productNameAndButton)
+
+    main.append(productContainer)
 }
 
 function renderShopItems(main) {
