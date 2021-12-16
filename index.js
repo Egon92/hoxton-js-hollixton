@@ -1,6 +1,7 @@
 const state = {
     store: [],
-    selectedProduct: null
+    selectedProduct: null,
+    modals: ''
 }
 //SERVER FUNCTIONS
 function getStoreItems() {
@@ -31,8 +32,6 @@ function getStoreItems() {
             </ul>
         </ul>
     </header> */
-
-
 function renderHeader() {
 
     const header = document.createElement(`header`)
@@ -73,6 +72,10 @@ function renderHeader() {
 
     const rightHeaderItem1 = document.createElement(`li`)
     rightHeaderItem1.setAttribute(`class`, `right-header-item`)
+    rightHeaderItem1.addEventListener(`click`, function () {
+        state.modals = `favourite`
+        render()
+    })
     const rightHeaderItemIcon1 = document.createElement(`img`)
     rightHeaderItemIcon1.setAttribute(`class`, `right-header-item-icon`)
     rightHeaderItemIcon1.setAttribute(`id`, `mag-glass`)
@@ -131,7 +134,13 @@ function renderMain() {
     } else {
         renderShopItems(main)
     }
+
+
+    // main.append(formSection)
+
     document.body.append(main)
+
+
 }
 
 function renderSelectedProduct(main) {
@@ -315,11 +324,79 @@ function renderFooter() {
     document.body.append(footer)
 }
 
+function renderFavouriteItemForm() {
+    // FAVOURITE ITEM FORM
+    //  <section class="form-section">
+    //     <form class="favourite-item-form">
+    //         <label class="favourite-form-label">
+    //             <span class="favourite-form-label-text">
+    //                 Search for your favourite items!
+    //             </span>
+    //             <span class="favourite-form-label-x">
+    //                 x
+    //             </span>
+    //         </label>
+    //         <input class="favourite-item-input" type="text" name="favourite" placeholder="Search..." required>
+    //     </form>
+    // </section> 
+    const formSection = document.createElement(`section`)
+    formSection.setAttribute(`class`, `form-section`)
+    formSection.addEventListener(`click`, function (event) {
+        event.stopImmediatePropagation()
+        state.modals = ''
+        render()
+    })
+    const favouriteItemForm = document.createElement(`form`)
+    favouriteItemForm.setAttribute(`class`, `favourite-item-form`)
+
+    const favouriteFormLabel = document.createElement(`label`)
+    favouriteFormLabel.setAttribute(`class`, `favourite-form-label`)
+
+    const favouriteFormLabelText = document.createElement(`span`)
+    favouriteFormLabelText.setAttribute(`class`, `favourite-form-label-text`)
+    favouriteFormLabelText.textContent = `Search for your favourite items!`
+
+    const favouriteFormLabelX = document.createElement(`span`)
+    favouriteFormLabelX.setAttribute(`class`, `favourite-form-label-x`)
+    favouriteFormLabelX.textContent = `x`
+    favouriteFormLabelX.addEventListener(`click`, function () {
+        state.modals = ''
+        render()
+    })
+
+    favouriteFormLabel.append(favouriteFormLabelText, favouriteFormLabelX)
+
+    const favouriteItemInput = document.createElement(`input`)
+    favouriteItemInput.setAttribute(`class`, `favourite-item-input`)
+    favouriteItemInput.setAttribute(`type`, `text`)
+    favouriteItemInput.setAttribute(`name`, `favourite`)
+    favouriteItemInput.setAttribute(`placeholder`, `Search...`)
+    favouriteItemInput.setAttribute(`required`, `true`)
+
+    favouriteItemForm.append(favouriteFormLabel, favouriteItemInput)
+
+    formSection.append(favouriteItemForm)
+
+    document.body.append(formSection)
+}
+
+function renderModal() {
+    if (state.modals === '') {
+
+    }
+    if (state.modals === 'favourite') {
+        renderFavouriteItemForm()
+
+    }
+
+}
+
 function render() {
     document.body.innerHTML = ''
     renderHeader()
     renderMain()
     renderFooter()
+    renderModal()
 }
 
 function init() {
@@ -327,7 +404,5 @@ function init() {
     getStoreItems().then(function (resp) {
         render()
     })
-
-
 }
 init()

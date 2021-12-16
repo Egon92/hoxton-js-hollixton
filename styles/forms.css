@@ -6,10 +6,17 @@
     font-family: sans-serif;
     list-style: none;
 }
+/* body{
+    position: relative;
+} */
 .form-section{
+    position: fixed;
+    top: 0;
+    z-index: 3;
     display: grid;
     place-content: center;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     backdrop-filter: brightness(70%);
 }
 .favourite-item-form{
